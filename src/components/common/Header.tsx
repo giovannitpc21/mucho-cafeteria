@@ -7,7 +7,6 @@ import { useCart } from '@/contexts/CartContext';
 const navItems = [
   { label: 'Inicio', href: '/' },
   { label: 'Carta', href: '/carta' },
-  { label: 'Tienda', href: '/tienda' },
   { label: 'Reservas', href: '/reservas' },
   { label: 'Contacto', href: '/contacto' },
 ];
@@ -58,17 +57,6 @@ export const Header: React.FC = React.memo(() => {
 
           {/* Cart & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <Link
-              to="/tienda"
-              className="relative p-2 text-[#1B3A2F] hover:text-[#C4A77D] transition-colors"
-            >
-              <ShoppingBag className="w-5 h-5" />
-              {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#C4A77D] text-white text-xs rounded-full flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
 
             <button
               onClick={toggleMenu}
