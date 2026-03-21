@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/contexts/CartContext';
 
@@ -14,7 +14,7 @@ const navItems = [
 export const Header: React.FC = React.memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const { totalItems } = useCart();
+  useCart();
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen((prev) => !prev);
