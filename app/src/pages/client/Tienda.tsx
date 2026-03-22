@@ -189,7 +189,7 @@ const Tienda: React.FC = () => {
 
   const confirmCheckout = useCallback(() => {
     const message = generateWhatsAppMessage(items, totalPrice, deliveryMethod, deliveryAddress, takeawayTime);
-    const whatsappUrl = `https://wa.me/5492615555555?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5492617003657?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     setShowCheckoutSuccess(true);
     setTimeout(() => {

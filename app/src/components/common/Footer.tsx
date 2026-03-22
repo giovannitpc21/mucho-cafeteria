@@ -63,7 +63,7 @@ export const Footer: React.FC = React.memo(() => {
                   rel="noopener noreferrer"
                   className="text-white/70 hover:text-[#C4A77D] transition-colors text-sm"
                 >
-                  +54 9 261 555-5555
+                  +54 9 261 700-3657
                 </a>
               </div>
               <div className="flex items-start space-x-3">

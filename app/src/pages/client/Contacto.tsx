@@ -19,7 +19,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Teléfono',
-    content: '+54 9 261 555-5555',
+    content: '+54 9 261 700-3657',
     subContent: 'WhatsApp disponible',
     action: {
       label: 'Escribir por WhatsApp',

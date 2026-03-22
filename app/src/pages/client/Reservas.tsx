@@ -221,7 +221,7 @@ const Reservas: React.FC = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => handleChange('phone', e.target.value)}
-                  placeholder="Ej: +54 9 261 555-5555"
+                  placeholder="Ej: +54 9 261 700-3657"
                   className={errors.phone ? 'border-red-500' : ''}
                 />
                 {errors.phone && (
