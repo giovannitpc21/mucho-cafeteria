@@ -7,6 +7,7 @@ import { useCart } from '@/contexts/CartContext';
 const navItems = [
   { label: 'Inicio', href: '/' },
   { label: 'Carta', href: '/carta' },
+    { label: 'Tienda', href: '/tienda' },
   { label: 'Reservas', href: '/reservas' },
   { label: 'Contacto', href: '/contacto' },
 ];
