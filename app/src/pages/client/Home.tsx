@@ -55,15 +55,11 @@ const HeroSection: React.FC = React.memo(() => (
             </Button>
           </Link>
           <Link to="/reservas">
-            <Button
-              variant="outline"
-              className="border-white/60 text-white hover:bg-white/15 px-8 py-6 text-lg [&>*]:text-white"
-              style={{ color: 'white' }}
-            >
-              <Calendar className="mr-2 w-5 h-5 text-white" />
-              Reservar Mesa
-            </Button>
-          </Link>
+  <button className="inline-flex items-center justify-center border border-white/60 text-white hover:bg-white/15 px-8 py-4 text-lg rounded-md transition-colors font-medium">
+    <Calendar className="mr-2 w-5 h-5" />
+    Reservar Mesa
+  </button>
+</Link>
         </div>
       </motion.div>
     </div>
@@ -297,13 +293,9 @@ const CTASection: React.FC = React.memo(() => (
             </Button>
           </Link>
           <Link to="/contacto">
-            <Button
-  variant="outline"
-  className="border-white/60 text-white hover:bg-white/15 px-8 py-6"
-  style={{ color: 'white' }}
->
+            <button className="inline-flex items-center justify-center border border-white/60 text-white hover:bg-white/15 px-8 py-4 rounded-md transition-colors font-medium text-base">
   Ver Ubicación
-</Button>
+</button>
           </Link>
         </div>
       </AnimatedSection>
