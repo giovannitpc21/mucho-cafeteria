@@ -8,11 +8,11 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Ubicación',
-    content: 'Mercado Central de Mendoza',
+    content: 'Mercado Moreno de Mendoza',
     subContent: 'Mendoza, Argentina',
     action: {
       label: 'Ver en Google Maps',
-      href: 'https://maps.google.com/?q=Mercado+Central+Mendoza',
+      href: 'https://maps.app.goo.gl/Z1t8w86ocdhEW9mG6',
       icon: ExternalLink,
     },
   },
@@ -23,7 +23,7 @@ const contactInfo = [
     subContent: 'WhatsApp disponible',
     action: {
       label: 'Escribir por WhatsApp',
-      href: 'https://wa.me/542615555555',
+      href: 'https://wa.me/542617003657',
       icon: MessageCircle,
     },
   },
@@ -129,10 +129,10 @@ const Contacto: React.FC = () => {
                 <MapPin className="w-16 h-16 text-[#1B3A2F]/30 mb-4" />
                 <p className="text-[#1B3A2F]/60 text-center px-4">
                   Mapa de Google Maps<br />
-                  <span className="text-sm">Mercado Central, Mendoza</span>
+                  <span className="text-sm">Mariano Moreno 585, Ciudad de Mendoza, Argentina</span>
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Mercado+Central+Mendoza"
+                  href="https://maps.app.goo.gl/Z1t8w86ocdhEW9mG6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4"

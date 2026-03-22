@@ -283,7 +283,7 @@ const CTASection: React.FC = React.memo(() => (
           ¿Listo para vivir la experiencia MUCHO?
         </h2>
         <p className="text-white/70 mb-8 max-w-xl mx-auto">
-          Reservá tu mesa o pasá por nuestro local en el Mercado Central de Mendoza.
+          Reservá tu mesa o pasá por nuestro local en el Mercado Moreno de Mendoza.
           MUCHO espacio te espera.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

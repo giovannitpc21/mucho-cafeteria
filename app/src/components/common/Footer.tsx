@@ -52,13 +52,13 @@ export const Footer: React.FC = React.memo(() => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-[#C4A77D] flex-shrink-0 mt-0.5" />
                 <span className="text-white/70 text-sm">
-                  Mercado Central, Mendoza, Argentina
+                  Mariano Moreno 585, Ciudad de Mendoza, Argentina
                 </span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#C4A77D] flex-shrink-0" />
                 <a 
-                  href="https://wa.me/542615555555" 
+                  href="https://wa.me/542617003657" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-white/70 hover:text-[#C4A77D] transition-colors text-sm"
