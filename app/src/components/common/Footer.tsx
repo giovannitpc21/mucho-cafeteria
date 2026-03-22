@@ -34,7 +34,7 @@ export const Footer: React.FC = React.memo(() => {
                 Nuestra Carta
               </Link>
               <Link to="/tienda" className="text-white/70 hover:text-[#C4A77D] transition-colors text-sm">
-                Tienda Online
+                Tienda
               </Link>
               <Link to="/reservas" className="text-white/70 hover:text-[#C4A77D] transition-colors text-sm">
                 Reservas
