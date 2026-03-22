@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Users, User, Phone, Sparkles, Check, AlertCircle } from 'lucide-react';
+import { Calendar, Clock, Users, User, Phone, Check, AlertCircle } from 'lucide-react';
 import { AnimatedSection } from '@/components/common/AnimatedSection';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,6 @@ interface FormData {
   date: string;
   time: string;
   guests: string;
-  occasion: string;
 }
 
 interface FormErrors {
@@ -23,7 +22,6 @@ interface FormErrors {
   date?: string;
   time?: string;
   guests?: string;
-  occasion?: string;
 }
 
 // Time slots
@@ -36,32 +34,20 @@ const timeSlots = [
 // Guest options
 const guestOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10+'];
 
-// Occasion options
-const occasionOptions = [
-  { value: '', label: 'Ninguna' },
-  { value: 'cumpleanos', label: 'Cumpleaños' },
-  { value: 'aniversario', label: 'Aniversario' },
-  { value: 'negocios', label: 'Almuerzo de negocios' },
-  { value: 'amigos', label: 'Encuentro de amigos' },
-  { value: 'familia', label: 'Reunión familiar' },
-  { value: 'romantica', label: 'Cena romántica' },
-  { value: 'otra', label: 'Otra ocasión especial' },
-];
-
 // Validation function
 const validateForm = (data: FormData): FormErrors => {
   const errors: FormErrors = {};
-  
+
   if (!data.name.trim() || data.name.length < 3) {
     errors.name = 'El nombre debe tener al menos 3 caracteres';
   }
-  
+
   if (!data.phone.trim()) {
     errors.phone = 'El teléfono es requerido';
   } else if (!/^\+?[\d\s-]{8,}$/.test(data.phone)) {
     errors.phone = 'Ingresá un teléfono válido';
   }
-  
+
   if (!data.date) {
     errors.date = 'Seleccioná una fecha';
   } else {
@@ -72,15 +58,15 @@ const validateForm = (data: FormData): FormErrors => {
       errors.date = 'La fecha no puede ser anterior a hoy';
     }
   }
-  
+
   if (!data.time) {
     errors.time = 'Seleccioná un horario';
   }
-  
+
   if (!data.guests) {
     errors.guests = 'Seleccioná la cantidad de personas';
   }
-  
+
   return errors;
 };
 
@@ -91,7 +77,6 @@ const Reservas: React.FC = () => {
     date: '',
     time: '',
     guests: '',
-    occasion: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -106,7 +91,7 @@ const Reservas: React.FC = () => {
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -114,10 +99,10 @@ const Reservas: React.FC = () => {
     }
 
     setIsSubmitting(true);
-    
+
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    
+
     setIsSubmitting(false);
     setIsSuccess(true);
   }, [formData]);
@@ -129,7 +114,6 @@ const Reservas: React.FC = () => {
       date: '',
       time: '',
       guests: '',
-      occasion: '',
     });
     setErrors({});
     setIsSuccess(false);
@@ -154,7 +138,11 @@ const Reservas: React.FC = () => {
               </h2>
               <p className="text-[#1B3A2F]/70 mb-8">
                 Gracias {formData.name}. Hemos recibido tu solicitud de reserva para el{' '}
-                {new Date(formData.date).toLocaleDateString('es-AR')} a las {formData.time}.
+                {new Date(formData.date + 'T12:00:00').toLocaleDateString('es-AR', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })} a las {formData.time}.
                 Te contactaremos por teléfono para confirmar.
               </p>
               <Button onClick={handleReset} className="bg-[#1B3A2F] hover:bg-[#2D4A3E]">
@@ -177,7 +165,7 @@ const Reservas: React.FC = () => {
               Reservá tu Mesa
             </h1>
             <p className="text-white/70 max-w-xl mx-auto">
-              Reservá con anticipación y asegurate tu lugar en MUCHO Café. 
+              Reservá con anticipación y asegurate tu lugar en MUCHO Café.
               Te esperamos con MUCHO gusto.
             </p>
           </AnimatedSection>
@@ -281,51 +269,30 @@ const Reservas: React.FC = () => {
                 </div>
               </div>
 
-              {/* Guests & Occasion */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="guests" className="text-[#1B3A2F]">
-                    <Users className="w-4 h-4 inline mr-2" />
-                    Cantidad de personas
-                  </Label>
-                  <Select value={formData.guests} onValueChange={(value) => handleChange('guests', value)}>
-                    <SelectTrigger className={errors.guests ? 'border-red-500' : ''}>
-                      <SelectValue placeholder="Seleccionar" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {guestOptions.map((num) => (
-                        <SelectItem key={num} value={num}>
-                          {num} {num === '1' ? 'persona' : 'personas'}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {errors.guests && (
-                    <p className="text-red-500 text-sm flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.guests}
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="occasion" className="text-[#1B3A2F]">
-                    <Sparkles className="w-4 h-4 inline mr-2" />
-                    Ocasión especial (opcional)
-                  </Label>
-                  <Select value={formData.occasion} onValueChange={(value) => handleChange('occasion', value)}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Seleccionar" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {occasionOptions.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+              {/* Guests */}
+              <div className="space-y-2">
+                <Label htmlFor="guests" className="text-[#1B3A2F]">
+                  <Users className="w-4 h-4 inline mr-2" />
+                  Cantidad de personas
+                </Label>
+                <Select value={formData.guests} onValueChange={(value) => handleChange('guests', value)}>
+                  <SelectTrigger className={errors.guests ? 'border-red-500' : ''}>
+                    <SelectValue placeholder="Seleccionar" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {guestOptions.map((num) => (
+                      <SelectItem key={num} value={num}>
+                        {num} {num === '1' ? 'persona' : 'personas'}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {errors.guests && (
+                  <p className="text-red-500 text-sm flex items-center">
+                    <AlertCircle className="w-4 h-4 mr-1" />
+                    {errors.guests}
+                  </p>
+                )}
               </div>
 
               {/* Submit */}
